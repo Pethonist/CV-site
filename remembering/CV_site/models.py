@@ -5,6 +5,7 @@ from django.db import models
 #     id = models.PositiveIntegerField(default=0, unique=True, verbose_name='id num of user')
 #     first_name = models.CharField(max_length=255, verbose_name='Name of user')
 #     last_name = models.CharField(max_length=255, verbose_name='Surname of user')
+#     email_address = models.CharField(max_length=255, unique=True, verbose_name='Email address of user')
 
 
 

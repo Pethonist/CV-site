@@ -1,11 +1,84 @@
 {% extends 'base.html' %}
 
+
+
+{% block style %}
+    <style>
+        p.dline {
+        line-height: 2;
+        }
+    </style>
+
+    <style>
+        .thumb img  {
+        border: 2px solid white;        /* Рамка вокруг фотографии */
+        padding: 15px;                  /* Расстояние от картинки до рамки */
+        background: white;              /* Цвет фона */
+        margin-top: 25px;               /* Отступ сверху */
+        margin-right: 10px;             /* Отступ справа */
+        margin-bottom: 10px;            /* Отступ снизу */
+        }
+    </style>
+{% endblock %}
+
+
+
 {% block title %}
     About
 {% endblock %}
 
 
-{% block  body %}
-    <h1>__________TEST__________</h1>
 
+{% block  body %}
+    <div class="py-5">
+        <h1 class=" mb-3 fw-normal text-center">      About site      </h1>
+    </div>
+
+    <div class="container">
+        <p class="dline">
+            This site was developed by Rostyslav Sharuiev as part of his study of the Django framework for the Python programming language and the HTML markup language.
+            <br>
+            The page layout is based on ready-made HTML templates from the Bootstrap resource and redesigned for the needs of the site.
+            <br>
+            Links to all materials are below (all links are pushable):
+            <br>
+        </p>
+
+        <ul>
+            <li>
+                <p class="dline">
+                    <a class="me-3 py-2 text-dark fst-italic" href="https://getbootstrap.com/docs/5.1/examples/">      Bootstrap                   </a>
+                </p>
+            </li>
+            <li>
+                <p class="dline">
+                    <a class="me-3 py-2 text-dark fst-italic" href="https://www.bootstrapcdn.com/">                    Bootstrap cdn               </a>
+                </p>
+            </li>
+            <li>
+                <p class="dline">
+                    <a class="me-3 py-2 text-dark fst-italic" href="https://www.python.org/">                          Python official site        </a>
+                </p>
+            </li>
+            <li>
+                <p class="dline">
+                    <a class="me-3 py-2 text-dark fst-italic" href="https://www.djangoproject.com/">                   Django framework            </a>
+                </p>
+            </li>
+            <li>
+                <p class="dline">
+                    <a class="me-3 py-2 text-dark fst-italic" href="https://www.django-rest-framework.org/">           Django rest framework       </a>
+                </p>
+            </li>
+        </ul>
+    </div>
+
+    <div class="container text-center">
+        <p class="thumb">
+            <img src="/static/img/Bootstrap_logo.svg.png" height="100">
+            <img src="/static/img/Python_logo.svg.png" height="100">
+            <img src="/static/img/django_logo.png" height="100">
+            <img src="/static/img/django_rest_logo.png" height="100">
+        </p>
+    </div>
 {% endblock %}
