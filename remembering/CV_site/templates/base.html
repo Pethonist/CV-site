@@ -29,7 +29,7 @@
                     <li><a href="{% url 'home' %}" class="nav-link px-2 text-secondary">    Home            </a></li>
                     <li><a href="{% url 'CV page' %}" class="nav-link px-2 text-white">     CV page         </a></li>
                     <li><a href="#" class="nav-link px-2 text-white">                       Pricing         </a></li>
-                    <li><a href="#" class="nav-link px-2 text-white">                       FAQs            </a></li>
+                    <li><a href="{% url 'faqs' %}" class="nav-link px-2 text-white">        FAQs            </a></li>
                     <li><a href="{% url 'about' %}" class="nav-link px-2 text-white">       About           </a></li>
                 </ul>
 
@@ -38,8 +38,13 @@
                 </form>
 
                 <div class="text-end">
+                    <!--
                     <button type="button" class="btn btn-outline-light me-2">   Login                       </button>
                     <button type="button" class="btn btn-warning">              Sign-up                     </button>
+                    -->
+
+                    <a href="{% url 'login' %}" class="btn btn-outline-light me-2">           Login           </a>
+                    <a href="{% url 'sign-up' %}" class="btn btn-warning">                    Sign-up         </a>
                 </div>
             </div>
         </div>
