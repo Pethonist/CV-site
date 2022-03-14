@@ -1,40 +1,41 @@
 from django.shortcuts import render
-from django.shortcuts import redirect
+# from django.shortcuts import redirect
 
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 
 from django.http import HttpResponseRedirect
 from django.views.generic import View
 
 from .forms import *
 from .models import *
+from .mixins import *
 
 
-class BaseView(View):
+class BaseView(ViewMixin, View):
     def get(self, request, *args, **kwargs):
         context = {}
         return render(request, 'base.html', context)
 
 
-class CVView(View):
+class CVView(ViewMixin, View):
     def get(self, request, *args, **kwargs):
         context = {}
         return render(request, 'CV.html', context)
 
 
-class AboutView(View):
+class AboutView(ViewMixin, View):
     def get(self, request, *args, **kwargs):
         context = {}
         return render(request, 'about.html', context)
 
 
-class FAQsView(View):
+class FAQsView(ViewMixin, View):
     def get(self, request, *args, **kwargs):
         context = {}
         return render(request, 'faqs.html', context)
 
 
-class LoginView(View):
+class LoginView(ViewMixin, View):
 
     def get(self, request, *args, **kwargs):
         form = LoginForm(request.POST or None)
@@ -61,7 +62,14 @@ class LoginView(View):
         return render(request, 'login.html', context)
 
 
-class RegistrationView(View):
+class LogoutView(ViewMixin, View):
+    def get(self, request, *args, **kwargs):
+        logout(request)
+        context = {}
+        return render(request, 'base.html', context)
+
+
+class RegistrationView(ViewMixin, View):
     def get(self, request, *args, **kwargs):
         form = RegistrationForm(request.POST or None)
         context = {
@@ -82,7 +90,7 @@ class RegistrationView(View):
             new_user.save()
             Visitor.objects.create(
                 user=new_user,
-                phone=form.cleaned_data['phone'],
+                phone=form.cleaned_data['phone']
             )
             user = authenticate(
                 username=form.cleaned_data['username'],
@@ -94,3 +102,11 @@ class RegistrationView(View):
             'form': form
         }
         return render(request, 'registration.html', context)
+
+
+class ProfileView(ViewMixin, View):
+
+    def get(self, request, *args, **kwargs):
+        # customer = Visitor.objects.get(user=request.user)
+        context = {}
+        return render(request, 'profile.html', context)

@@ -10,7 +10,7 @@ class Visitor(models.Model):
     first_name = models.CharField(max_length=255, verbose_name='Name of user')
     last_name = models.CharField(max_length=255, verbose_name='Surname of user')
     email_address = models.CharField(max_length=255, unique=True, verbose_name='Email address of user')
-    phone = models.CharField(max_length=25, )
+    phone = models.CharField(max_length=25, null=True, blank=True, verbose_name='Phone number')
 
     def __str__(self):
         return 'User: {} {}'.format(self.first_name, self.last_name)

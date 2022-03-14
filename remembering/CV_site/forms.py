@@ -12,8 +12,8 @@ class LoginForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['username'].label = 'Логин'
-        self.fields['password'].label = 'Пароль'
+        self.fields['username'].label = 'Name'
+        self.fields['password'].label = 'Passwowrd'
 
     def clean(self):
         username = self.cleaned_data['username']
@@ -40,13 +40,13 @@ class RegistrationForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['username'].label = 'Логин'
-        self.fields['password'].label = 'Пароль'
-        self.fields['confirm_password'].label = 'Подтвердите пароль'
-        self.fields['phone'].label = 'Номер телефона'
-        self.fields['first_name'].label = 'Ваше имя'
-        self.fields['last_name'].label = 'Ваша фамилия'
-        self.fields['email'].label = 'Электронная Почта'
+        self.fields['username'].label = 'Name'
+        self.fields['password'].label = 'Password'
+        self.fields['confirm_password'].label = 'Confirm password'
+        self.fields['phone'].label = 'Phone number'
+        self.fields['first_name'].label = 'First name'
+        self.fields['last_name'].label = 'Last name'
+        self.fields['email'].label = 'Email'
 
     def clean_email(self):
         email = self.cleaned_data['email']
