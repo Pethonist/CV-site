@@ -13,7 +13,7 @@ class LoginForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['username'].label = 'Name'
-        self.fields['password'].label = 'Passwowrd'
+        self.fields['password'].label = 'Password'
 
     def clean(self):
         username = self.cleaned_data['username']
@@ -31,12 +31,12 @@ class RegistrationForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ['username', 'password', 'confirm_password', 'first_name', 'last_name', 'phone', 'email']
+        fields = ['username', 'password', 'confirm_password', 'first_name', 'last_name', 'phone', 'email_address']
 
     confirm_password = forms.CharField(widget=forms.PasswordInput)
     password = forms.CharField(widget=forms.PasswordInput)
     phone = forms.CharField(required=False)
-    email = forms.EmailField(required=True)
+    email_address = forms.EmailField(required=True)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -46,16 +46,16 @@ class RegistrationForm(forms.ModelForm):
         self.fields['phone'].label = 'Phone number'
         self.fields['first_name'].label = 'First name'
         self.fields['last_name'].label = 'Last name'
-        self.fields['email'].label = 'Email'
+        self.fields['email_address'].label = 'Email'
 
     def clean_email(self):
-        email = self.cleaned_data['email']
-        domain = email.split('.')[-1]
+        email_address = self.cleaned_data['email_address']
+        domain = email_address.split('.')[-1]
         if domain in ['ru', 'net']:
             raise forms.ValidationError(f'Регистрация для домена "{domain}" не возможна')
-        if User.objects.filter(email=email).exists():
+        if User.objects.filter(email=email_address).exists():
             raise forms.ValidationError(f'Данный почтовый адрес уже зарегистрирован в ситеме')
-        return email
+        return email_address
 
     def clean_username(self):
         username = self.cleaned_data['username']

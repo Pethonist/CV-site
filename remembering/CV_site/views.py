@@ -20,7 +20,7 @@ class BaseView(ViewMixin, View):
 class CVView(ViewMixin, View):
     def get(self, request, *args, **kwargs):
         context = {}
-        return render(request, 'CV.html', context)
+        return render(request, 'portfolio.html', context)
 
 
 class AboutView(ViewMixin, View):
@@ -82,7 +82,7 @@ class RegistrationView(ViewMixin, View):
         if form.is_valid():
             new_user = form.save(commit=False)
             new_user.username = form.cleaned_data['username']
-            new_user.email = form.cleaned_data['email']
+            new_user.email_address = form.cleaned_data['email_address']
             new_user.first_name = form.cleaned_data['first_name']
             new_user.last_name = form.cleaned_data['last_name']
             new_user.save()
